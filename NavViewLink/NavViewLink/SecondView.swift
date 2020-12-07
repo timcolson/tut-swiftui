@@ -25,7 +25,6 @@ struct SecondView: View {
       //  Text("Go back!")
       //}
     }
-    
   }
 }
 
