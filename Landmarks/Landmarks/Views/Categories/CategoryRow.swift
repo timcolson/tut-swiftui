@@ -19,7 +19,7 @@ struct CategoryRow: View {
                     }
                 }
             }
-            .frame(height: 185)
+            .frame(height: 150)
         }
     }
     

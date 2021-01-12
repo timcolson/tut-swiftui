@@ -13,10 +13,12 @@ struct CategoryItem: View {
         VStack(alignment: .leading) {
             landmark.image
                 .resizable()
-                .frame(width: 155, height: 155)
+                .frame(width: 100, height: 100)
                 .cornerRadius(5)
             Text(landmark.name)
-                .font(.caption)
+                .font(.system(size:14))
+                .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: .leading)
         }
         .padding(.leading, 15)
     }
@@ -24,6 +26,6 @@ struct CategoryItem: View {
 
 struct CategoryItem_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryItem(landmark: ModelData().landmarks[0])
+        CategoryItem(landmark: ModelData().landmarks[1])
     }
 }
