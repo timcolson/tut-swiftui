@@ -99,6 +99,13 @@
 			path = Profiles;
 			sourceTree = "<group>";
 		};
+		2C197BE925B801D400B632BD /* PageView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PageView;
+			sourceTree = "<group>";
+		};
 		2C4B2952259C066800179B37 /* Hikes */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,13 +172,14 @@
 		2CA14A37258B309F00DD2CFE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2C15216C25AD0A73003CC5EA /* Profiles */,
-				2C4B295C259D297700179B37 /* Categories */,
-				2C9E2489259AB94B0049732B /* Badges */,
 				2CB2D5B7257D7F6C00807857 /* ContentView.swift */,
-				2C4B2952259C066800179B37 /* Hikes */,
+				2C9E2489259AB94B0049732B /* Badges */,
+				2C4B295C259D297700179B37 /* Categories */,
 				2C9E2475259A9B040049732B /* Helpers */,
+				2C4B2952259C066800179B37 /* Hikes */,
 				2C9E2477259A9B140049732B /* Landmarks */,
+				2C197BE925B801D400B632BD /* PageView */,
+				2C15216C25AD0A73003CC5EA /* Profiles */,
 			);
 			path = Views;
 			sourceTree = "<group>";
