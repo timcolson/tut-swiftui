@@ -14,6 +14,6 @@ struct Profile {
         case autumn = "🍂"
         case winter = "☃️"
         
-        var id: String {self.rawValue}
+        var id: String { self.rawValue }
     }
 }
