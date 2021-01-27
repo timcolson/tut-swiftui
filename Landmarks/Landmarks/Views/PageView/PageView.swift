@@ -2,9 +2,24 @@ import SwiftUI
 
 struct PageView<Page: View>: View {
     var pages: [Page]
-
+    @State private var currentPage = 1
+    var debug = true
+    
     var body: some View {
-        PageViewController(pages: pages)
+        
+        VStack {
+            PageViewController(pages: pages, currentPage:$currentPage)
+            
+            if debug {
+                Button(action:
+                        {currentPage += 1
+                         if currentPage >= pages.count {currentPage = 0}
+                        })
+                {
+                    Text("Jump ahead \(currentPage)")
+                }
+            }
+        }
     }
 }
 

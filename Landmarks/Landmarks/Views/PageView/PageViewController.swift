@@ -4,6 +4,7 @@ import UIKit
 struct PageViewController<Page: View>: UIViewControllerRepresentable {
     
     var pages: [Page]
+    @Binding var currentPage: Int
     
     /* SwiftUI calls this makeCoordinator() method before makeUIViewController(context:),
      so that you have access to the coordinator object when configuring your view controller.
@@ -27,7 +28,7 @@ struct PageViewController<Page: View>: UIViewControllerRepresentable {
     
     func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {
         pageViewController.setViewControllers(
-            [context.coordinator.controllers[0]], direction: .forward, animated: true)
+            [context.coordinator.controllers[currentPage]], direction: .forward, animated: true)
     }
     
     class Coordinator : NSObject, UIPageViewControllerDataSource {
