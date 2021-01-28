@@ -3,25 +3,19 @@ import SwiftUI
 struct PageView<Page: View>: View {
     var pages: [Page]
     @State private var currentPage = 1
-    var debug = true
     
     var body: some View {
         
-        VStack {
+        ZStack(alignment: .bottomTrailing) {
             PageViewController(pages: pages, currentPage:$currentPage)
+            PageControl(numberOfPages: pages.count, currentPage: $currentPage)
+                .frame(width: CGFloat(pages.count * 18))
+                .padding(.trailing)
             
-            if debug {
-                Button(action:
-                        {currentPage += 1
-                         if currentPage >= pages.count {currentPage = 0}
-                        })
-                {
-                    Text("Jump ahead \(currentPage)")
-                }
-            }
         }
     }
 }
+
 
 struct PageView_Previews: PreviewProvider {
     static var previews: some View {
