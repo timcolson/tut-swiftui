@@ -10,7 +10,9 @@ struct LandmarkDetail: View {
     }
     
     var body: some View {
-        Text("Hello LM \(landmarkIndex)")
+        CircleImage(image: landmark.image.resizable())
+            .scaledToFill()
+//        Text("Hello LM \(landmarkIndex)")
     }
 }
 
@@ -18,8 +20,16 @@ struct LandmarkDetail_Previews: PreviewProvider {
     static var previews: some View {
         
         let modelData = ModelData()
-        return LandmarkDetail(landmark: modelData.landmarks[1])
-            .environmentObject(modelData)
+        
+        return Group {
+                    LandmarkDetail(landmark: modelData.landmarks[0])
+                        .environmentObject(modelData)
+                        .previewDevice("Apple Watch Series 5 - 44mm")
+
+                    LandmarkDetail(landmark: modelData.landmarks[1])
+                        .environmentObject(modelData)
+                        .previewDevice("Apple Watch Series 5 - 40mm")
+                }
         
     }
 }
