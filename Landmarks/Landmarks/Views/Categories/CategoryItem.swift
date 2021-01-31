@@ -10,7 +10,7 @@ import SwiftUI
 struct CategoryItem: View {
     var landmark : Landmark
     var body: some View {
-        NavigationLink(destination:LandmarkDetail(landmark: landmark)) {
+      
             
             VStack(alignment: .leading) {
                 landmark.image
@@ -24,7 +24,7 @@ struct CategoryItem: View {
             }
             .padding(.leading, 15)
         }
-    }
+    
 }
 
 struct CategoryItem_Previews: PreviewProvider {

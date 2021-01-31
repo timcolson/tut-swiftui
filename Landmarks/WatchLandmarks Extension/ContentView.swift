@@ -1,9 +1,3 @@
-//
-//  ContentView.swift
-//  WatchLandmarks Extension
-//
-//  Created by Tim Colson on 1/28/21.
-//
 
 import SwiftUI
 
