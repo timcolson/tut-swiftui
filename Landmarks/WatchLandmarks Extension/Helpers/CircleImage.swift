@@ -1,5 +1,9 @@
 import SwiftUI
 
+// 2020-01-31 Not included in the WatchLandmarks Ext Target
+// CircleImage (actually a rounded rect) from Phone is used instead
+
+
 struct CircleImage: View {
     var image: Image
     
