@@ -13,11 +13,10 @@ struct LandmarkList: View {
     
     var body: some View {
         NavigationView {
-            
+            Toggle(isOn: $showFavoritesOnly) {
+                Label("Favorites only", systemImage: "star.fill")
+            }
             List {
-                Toggle(isOn: $showFavoritesOnly, label: {
-                    Text("Favorites only")
-                })
                 ForEach (filteredLandmarks) { landmark in
                     NavigationLink(destination: LandmarkDetail(landmark: landmark)) {
                         LandmarkRow(landmark: landmark)
@@ -26,6 +25,19 @@ struct LandmarkList: View {
             }
             .navigationTitle("Landmarks")
             .frame(minWidth: 300)
+//            .toolbar {
+//                ToolbarItem {
+//                    Menu {
+//                        Toggle(isOn: $showFavoritesOnly) {
+//                            Label("Favorites only", systemImage: "star.fill")
+//                        }
+//
+//                    } label: {
+//                        Label("Filter", systemImage: "slider.horizontal.3")
+//                    }
+//                }
+//            }
+            
         }
     }
 }
@@ -37,14 +49,14 @@ struct LandmarkList_Previews: PreviewProvider {
             .environmentObject(ModelData())
         // Additional Preview Device Options (use if needed)
         //        ForEach(["iPhone SE", "iPhone 7 Plus"], id: \.self) { deviceName in
-//            LandmarkList()
-//                .previewDevice(PreviewDevice(rawValue: deviceName))
-//                .previewDisplayName(deviceName)
-//        }
-//
-//        LandmarkList()
-//            .previewDevice(PreviewDevice(rawValue: "iPhone SE (2nd generation)"))
-//            .previewDisplayName("SE 2nd Gen")
+        //            LandmarkList()
+        //                .previewDevice(PreviewDevice(rawValue: deviceName))
+        //                .previewDisplayName(deviceName)
+        //        }
+        //
+        //        LandmarkList()
+        //            .previewDevice(PreviewDevice(rawValue: "iPhone SE (2nd generation)"))
+        //            .previewDisplayName("SE 2nd Gen")
     }
 }
 
