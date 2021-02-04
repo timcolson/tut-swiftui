@@ -28,6 +28,11 @@ struct LandmarkList: View {
     
     var body: some View {
         NavigationView {
+            // Note, on MacOS, it's possible to hide this nav view; no way to restore.
+            // Manual fix: Quit app; run the following from terminal:
+            // defaults delete com.youridentifier.yourapp
+            // Src: https://bit.ly/hackingswift-sidebar-restore
+            
             List {
                 ForEach (filteredLandmarks) { landmark in
                     NavigationLink(destination: LandmarkDetail(landmark: landmark)) {
