@@ -3,13 +3,28 @@ import SwiftUI
 struct LandmarkList: View {
     @EnvironmentObject var modelData: ModelData
     @State private var showFavoritesOnly = false
+    @State private var filter = FilterCategory.all
+    
+    enum FilterCategory: String, CaseIterable, Identifiable {
+        case all = "All"
+        case lakes = "Lakes"
+        case rivers = "Rivers"
+        case mountains = "Mountains"
+        
+        var id: FilterCategory { self }
+    }
     
     var filteredLandmarks: [Landmark] {
         modelData.landmarks.filter { landmark in
             (!showFavoritesOnly || landmark.isFavorite)
+                && (filter == .all || filter.rawValue == landmark.category.rawValue)
         }
     }
     
+    var title: String {
+        let title = filter == .all ? "Landmarks" : filter.rawValue
+        return showFavoritesOnly ? "Favorite \(title)" : title
+    }
     
     var body: some View {
         NavigationView {
@@ -20,15 +35,32 @@ struct LandmarkList: View {
                     }
                 }
             }
-            .navigationTitle("Landmarks")
+            .navigationTitle(title)
             .frame(minWidth: 300)
             .toolbar {
                 ToolbarItem {
                     Menu {
+                        
+                        
                         Toggle(isOn: $showFavoritesOnly) {
-                            Label("Favorites only", systemImage: "star.fill")
+                            Label(title: {
+                                Text("Favorites ONLY")
+                                    .foregroundColor(Color.red)
+                            }, icon: {
+                                Image(systemName: showFavoritesOnly ? "star.fill" : "star")
+                                    .renderingMode(.template)
+                                    .foregroundColor(showFavoritesOnly ? Color.yellow : Color.blue)
+                                    .accentColor(showFavoritesOnly ? Color.yellow : Color.blue)
+                                
+                            })
                         }
-
+                        
+                        Picker("Category", selection: $filter) {
+                            ForEach(FilterCategory.allCases) { category in
+                                Text(category.rawValue).tag(category)
+                            }
+                        }.pickerStyle(InlinePickerStyle())
+                        
                     } label: {
                         Label("Filter", systemImage: "slider.horizontal.3")
                     }
