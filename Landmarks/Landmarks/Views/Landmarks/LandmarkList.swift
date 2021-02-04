@@ -66,6 +66,8 @@ struct LandmarkList: View {
                     }
                 }
             }
+            // Second view for wide layouts
+            Text("Select a Landmark")
             
         }
     }
